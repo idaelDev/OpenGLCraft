@@ -80,6 +80,66 @@ void renderObjects(void)
 	glVertex3d(0,0,0);
 	glVertex3d(0,0,10000);
 	glEnd();
+
+
+	//A rajouter pour debug : rotation dans le temps
+	glRotatef(NYRenderer::_DeltaTimeCumul * 100,
+		g_slider->Value*10.0f, 1, cos(NYRenderer::_DeltaTimeCumul));
+
+	glBegin(GL_TRIANGLES);
+	//Face1 UP
+	glColor3d(0, 0, 1);
+	glVertex3d(-1, -1, 1);
+	glVertex3d(1, -1, 1);
+	glVertex3d(-1, 1, 1);
+	//glColor3d(1, 0, 0);
+	glVertex3d(1, -1, 1);
+	glVertex3d(1, 1, 1);
+	glVertex3d(-1, 1, 1);
+
+	//Face2 Down
+	glVertex3d(-1, 1, -1);
+	glVertex3d(1, -1, -1);
+	glVertex3d(-1, -1, -1);
+	//glColor3d(1, 0, 0);
+	glVertex3d(-1, 1, -1);
+	glVertex3d(1, 1, -1);
+	glVertex3d(1, -1, -1);
+
+	//Face3 X Front
+	glColor3d(1, 0, 0);
+	glVertex3d(1, -1, -1);
+	glVertex3d(1, 1, -1);
+	glVertex3d(1, -1, 1);
+	glVertex3d(1, 1, -1);
+	glVertex3d(1, 1, 1);
+	glVertex3d(1, -1, 1);
+
+	//Face4 X Back
+	glVertex3d(-1, -1, 1);
+	glVertex3d(-1, 1, -1);
+	glVertex3d(-1, -1, -1);
+	glVertex3d(-1, -1, 1);
+	glVertex3d(-1, 1, 1);
+	glVertex3d(-1, 1, -1);
+
+	//Face5 Y Front
+	glColor3d(0, 1, 0);
+	glVertex3d(1, 1, -1);
+	glVertex3d(-1, 1, -1);
+	glVertex3d(1, 1, 1);
+	glVertex3d(-1, 1, -1);
+	glVertex3d(-1, 1, 1);
+	glVertex3d(1, 1, 1);
+
+	//Face6 Y Back
+	glVertex3d(1, -1, 1);
+	glVertex3d(-1, -1, -1);
+	glVertex3d(1, -1, -1);
+	glVertex3d(1, -1, 1);
+	glVertex3d(-1, -1, 1);
+	glVertex3d(-1, -1, -1);
+	glEnd();
 	
 }
 
