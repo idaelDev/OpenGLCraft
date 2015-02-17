@@ -16,8 +16,12 @@
 #include "engine/gui/screen_manager.h"
 
 #include "../base/Primitive.h"
+//Pour avoir le monde
+#include "world.h"
+#include "CameraController.h"
 
-
+//Variable globale
+NYWorld * g_world;
 
 NYRenderer * g_renderer = NULL;
 NYTimer * g_timer = NULL;
@@ -47,6 +51,8 @@ float g_mn_coucher = 19.0f * 60.0f;
 float g_tweak_time = 0;
 bool g_fast_time = false;
 
+CameraController cam(NULL);
+
 //////////////////////////////////////////////////////////////////////////
 // GESTION APPLICATION
 //////////////////////////////////////////////////////////////////////////
@@ -65,6 +71,7 @@ void update(void)
 		g_elapsed_fps -= 1.0f;
 		g_nb_frames = 0;
 	}
+	cam.update(elapsed);
 
 	//Rendu
 	g_renderer->render(elapsed);
@@ -144,10 +151,15 @@ void renderObjects(void)
 	glVertex3d(0,0,10000);
 	glEnd();
 
-
 	
 	glEnable(GL_LIGHTING);
 
+	//Au lieu de rendre notre cube dans sa sphère (mais on laisse le soleil)
+	glPushMatrix();
+	g_world->render_world_vbo();
+	glPopMatrix();
+
+	/*
 	//Rendu du Cube
 
 	//On sauve la matrice
@@ -166,6 +178,7 @@ void renderObjects(void)
 	//On recharge la matrice précédente
 	glPopMatrix();
 
+
 	//Sphère blanche transparente pour bien voir le shading et le reflet du soleil
 	GLfloat whiteSpecularMaterialSphere[] = { 0.3, 0.3, 0.3, 0.8 };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, whiteSpecularMaterialSphere);
@@ -178,7 +191,7 @@ void renderObjects(void)
 	glMaterialfv(GL_FRONT, GL_AMBIENT, materialAmbientSphere);
 
 	glutSolidSphere(2, 30, 30);
-
+	//*/
 }
 
 bool getSunDirection(NYVert3Df & sun, float mnLever, float mnCoucher)
@@ -317,11 +330,13 @@ void keyboardDownFunction(unsigned char key, int p1, int p2)
 			glutPositionWindow(0,0);
 			g_fullscreen = false;
 		}
-	}	
+	}
+	cam.inputDown(key);
 }
 
 void keyboardUpFunction(unsigned char key, int p1, int p2)
 {
+	cam.inputUp(key);
 }
 
 void mouseWheelFunction(int wheel, int dir, int x, int y)
@@ -567,7 +582,7 @@ int main(int argc, char* argv[])
 	g_screen_manager->setActiveScreen(g_screen_jeu);
 	
 	//Init Camera
-	g_renderer->_Camera->setPosition(NYVert3Df(10,10,10));
+	g_renderer->_Camera->setPosition(NYVert3Df(500,500,500));
 	g_renderer->_Camera->setLookAt(NYVert3Df(0,0,0));
 	
 
@@ -579,12 +594,21 @@ int main(int argc, char* argv[])
 	NYColor skyColor(0, 181.f / 255.f, 221.f / 255.f, 1);
 	g_renderer->setBackgroundColor(skyColor);
 
+	//A la fin du main, on genere un monde
+	g_world = new NYWorld();
+	g_world->_FacteurGeneration = 5;
+	g_world->init_world();
+	//g_world->getCube(0, 0, 0)->_Type = CUBE_TERRE;
+	g_world->add_world_to_vbo();
+
+	cam.camera = g_renderer->_Camera;
 
 	//Init Timer
 	g_timer = new NYTimer();
 	
 	//On start
 	g_timer->start();
+
 
 	glutMainLoop(); 
 

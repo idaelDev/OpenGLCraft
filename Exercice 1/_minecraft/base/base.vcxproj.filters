@@ -9,6 +9,8 @@
       <Filter>engine\log</Filter>
     </ClCompile>
     <ClCompile Include="Primitive.cpp" />
+    <ClCompile Include="..\src\chunk.cpp" />
+    <ClCompile Include="..\src\CameraController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -38,5 +40,9 @@
       <Filter>engine\render</Filter>
     </ClInclude>
     <ClInclude Include="Primitive.h" />
+    <ClInclude Include="..\src\chunk.h" />
+    <ClInclude Include="..\src\cube.h" />
+    <ClInclude Include="..\src\world.h" />
+    <ClInclude Include="..\src\CameraController.h" />
   </ItemGroup>
 </Project>

@@ -25,6 +25,7 @@ void Primitive::cube(NYVert3Df position, NYVert3Df rotation, NYVert3Df scale)
 	glVertex3d(scale.X, -scale.Y, scale.Z);
 	glNormal3f(-1, 1, 1);
 	glVertex3d(-scale.X, scale.Y, scale.Z);
+
 	glNormal3f(1, -1, 1);
 	glVertex3d(scale.X, -scale.Y, scale.Z);
 	glNormal3f(1, 1, 1);
@@ -40,6 +41,7 @@ void Primitive::cube(NYVert3Df position, NYVert3Df rotation, NYVert3Df scale)
 	glVertex3d(scale.X, -scale.Y, -scale.Z);
 	glNormal3f(-1, -1, -1);
 	glVertex3d(-scale.X, -scale.Y, -scale.Z);
+
 	glNormal3f(-1, 1, -1);
 	glVertex3d(-scale.X, scale.Y, -scale.Z);
 	glNormal3f(1, 1, -1);
