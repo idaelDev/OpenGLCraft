@@ -181,7 +181,7 @@ public :
 		else
 		{
 
-			int r = 10 / prof + 1;
+			int r = 5 / prof + 1;
 			if (_MatriceHeights[x12][y12] == 0)
 				load_pile(x12, y12, z12 + rand() % r - r/2);
 			if (_MatriceHeights[x23][y23] == 0)
