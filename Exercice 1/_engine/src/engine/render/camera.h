@@ -163,7 +163,4 @@ public:
 		_InvertViewMatrix.invert();
 	}
 };
-
-
-
 #endif

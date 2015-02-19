@@ -19,6 +19,7 @@
 //Pour avoir le monde
 #include "world.h"
 #include "CameraController.h"
+#include "avatar.h"
 
 //Variable globale
 NYWorld * g_world;
@@ -51,7 +52,9 @@ float g_mn_coucher = 19.0f * 60.0f;
 float g_tweak_time = 0;
 bool g_fast_time = false;
 
-CameraController cam(NULL);
+NYAvatar *avatar;
+
+//CameraController cam(NULL);
 
 //////////////////////////////////////////////////////////////////////////
 // GESTION APPLICATION
@@ -71,7 +74,8 @@ void update(void)
 		g_elapsed_fps -= 1.0f;
 		g_nb_frames = 0;
 	}
-	cam.update(elapsed);
+	//cam.update(elapsed);
+	avatar->update(elapsed);
 
 	//Rendu
 	g_renderer->render(elapsed);
@@ -159,6 +163,7 @@ void renderObjects(void)
 	g_world->render_world_vbo();
 	glPopMatrix();
 
+	avatar->render();
 	/*
 	//Rendu du Cube
 
@@ -331,12 +336,26 @@ void keyboardDownFunction(unsigned char key, int p1, int p2)
 			g_fullscreen = false;
 		}
 	}
-	cam.inputDown(key);
+	switch (key)
+	{
+	case 'z': avatar->avance = true; break;
+	case 's': avatar->recule = true; break;
+	case 'q': avatar->gauche = true; break;
+	case 'd': avatar->droite = true; break;
+	case ' ': avatar->Jump = true; break;
+	}
 }
 
 void keyboardUpFunction(unsigned char key, int p1, int p2)
 {
-	cam.inputUp(key);
+	switch (key)
+	{
+	case 'z': avatar->avance = false; break;
+	case 's': avatar->recule = false; break;
+	case 'q': avatar->gauche = false; break;
+	case 'd': avatar->droite = false; break;
+	case 'a': avatar->pickCube();
+	}
 }
 
 void mouseWheelFunction(int wheel, int dir, int x, int y)
@@ -398,14 +417,13 @@ void mouseMoveFunction(int x, int y, bool pressed)
 			avance.normalize();
 			avance *= (float)dy / 50.0f;
 
-			g_renderer->_Camera->move(avance + strafe);
+			g_renderer->_Camera->move((avance + strafe) *50);
 		}
 		else
 		{
 			g_renderer->_Camera->rotate((float)-dx / 300.0f);
 			g_renderer->_Camera->rotateUp((float)-dy / 300.0f);
 		}
-
 	}
 	//*/
 
@@ -582,7 +600,7 @@ int main(int argc, char* argv[])
 	g_screen_manager->setActiveScreen(g_screen_jeu);
 	
 	//Init Camera
-	g_renderer->_Camera->setPosition(NYVert3Df(500,500,500));
+	g_renderer->_Camera->setPosition(NYVert3Df(100,100,200));
 	g_renderer->_Camera->setLookAt(NYVert3Df(0,0,0));
 	
 
@@ -596,12 +614,13 @@ int main(int argc, char* argv[])
 
 	//A la fin du main, on genere un monde
 	g_world = new NYWorld();
-	g_world->_FacteurGeneration = 5;
+	g_world->_FacteurGeneration = 1;
 	g_world->init_world();
 	//g_world->getCube(0, 0, 0)->_Type = CUBE_TERRE;
-	g_world->add_world_to_vbo();
 
-	cam.camera = g_renderer->_Camera;
+
+	avatar = new NYAvatar(g_renderer->_Camera, g_world);
+	//cam.camera = g_renderer->_Camera;
 
 	//Init Timer
 	g_timer = new NYTimer();
@@ -612,6 +631,7 @@ int main(int argc, char* argv[])
 
 	glutMainLoop(); 
 
+	delete avatar;
 	return 0;
 }
 
