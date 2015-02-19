@@ -34,6 +34,12 @@
     <ClInclude Include="Perlin.h" />
     <ClInclude Include="Primitive.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\run\shaders\postprocess\pshader.glsl" />
+    <None Include="..\run\shaders\psbase.glsl" />
+    <None Include="..\run\shaders\pshader.glsl" />
+    <None Include="..\run\shaders\vsbase.glsl" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8531C627-6452-48A0-B4A8-40CCCC6376E1}</ProjectGuid>
     <RootNamespace>udock</RootNamespace>

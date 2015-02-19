@@ -1,4 +1,4 @@
-﻿Build started 19/02/2015 11:53:25.
+﻿Build started 19/02/2015 16:38:57.
      1>Project "C:\Users\judicael.abecassis\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../src /I../src/external /I../../_engine/src /I../../_engine/src/external /I../../_engine/src/external/bullet/src /ZI /nologo /W3 /WX- /Od /Oy- /D LOG_FILE /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D TETLIBRARY /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\main.cpp
@@ -30,10 +30,11 @@
      1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(693): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
      1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(694): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
      1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(695): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(227): warning C4305: '*=' : truncation from 'double' to 'float'
-     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(235): warning C4305: '*=' : truncation from 'double' to 'float'
-     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(263): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(265): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(176): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(250): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(258): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(286): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\judicael.abecassis\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(288): warning C4305: 'argument' : truncation from 'double' to 'float'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\judicael.abecassis\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib /LIBPATH:../../_engine/lib libpng16.lib libcurl.lib openal32.lib alut_d.lib glew32.lib freeglut.lib Kernel32.lib Psapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\judicael.abecassis\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\judicael.abecassis\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.lib" /MACHINE:X86 /SAFESEH Debug\log.obj
          Debug\renderer.obj
@@ -47,4 +48,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.06
+Time Elapsed 00:00:00.92

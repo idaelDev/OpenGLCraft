@@ -21,6 +21,7 @@
 #include "CameraController.h"
 #include "avatar.h"
 
+
 //Variable globale
 NYWorld * g_world;
 
@@ -33,7 +34,7 @@ int g_mouse_btn_gui_state = 0;
 bool g_fullscreen = false;
 int old_mouseX = 0;
 int old_mouseY = 0;
-
+bool camControl = true;
 //GUI 
 GUIScreenManager * g_screen_manager = NULL;
 GUIBouton * BtnParams = NULL;
@@ -53,12 +54,17 @@ float g_tweak_time = 0;
 bool g_fast_time = false;
 
 NYAvatar *avatar;
+GLuint g_program;
 
-//CameraController cam(NULL);
+
+CameraController cam(NULL);
 
 //////////////////////////////////////////////////////////////////////////
 // GESTION APPLICATION
 //////////////////////////////////////////////////////////////////////////
+
+
+
 void update(void)
 {
 	float elapsed = g_timer->getElapsedSeconds(true);
@@ -74,8 +80,10 @@ void update(void)
 		g_elapsed_fps -= 1.0f;
 		g_nb_frames = 0;
 	}
-	//cam.update(elapsed);
-	avatar->update(elapsed);
+	if (camControl)
+		cam.update(elapsed);
+	else
+		avatar->update(elapsed);
 
 	//Rendu
 	g_renderer->render(elapsed);
@@ -159,11 +167,26 @@ void renderObjects(void)
 	glEnable(GL_LIGHTING);
 
 	//Au lieu de rendre notre cube dans sa sphère (mais on laisse le soleil)
+	glUseProgram(g_program);
+
+	GLuint elap = glGetUniformLocation(g_program, "elapsed");
+	glUniform1f(elap, NYRenderer::_DeltaTimeCumul);
+
+	GLuint amb = glGetUniformLocation(g_program, "ambientLevel");
+	glUniform1f(amb, 0.4);
+
+	GLuint invView = glGetUniformLocation(g_program, "invertView");
+	glUniformMatrix4fv(invView, 1, true, g_renderer->_Camera->_InvertViewMatrix.Mat.t);
+
+
+
+
 	glPushMatrix();
 	g_world->render_world_vbo();
 	glPopMatrix();
 
-	avatar->render();
+	if (!camControl)
+		avatar->render();
 	/*
 	//Rendu du Cube
 
@@ -304,8 +327,20 @@ void resizeFunction(int width, int height)
 void specialDownFunction(int key, int p1, int p2)
 {
 	//On change de mode de camera
-	if(key == GLUT_KEY_LEFT)
+	if(key == GLUT_KEY_F1)
 	{
+		//Creation d'un programme de shader, avec vertex et fragment shaders
+		g_program = g_renderer->createProgram("shaders/psbase.glsl", "shaders/vsbase.glsl");
+	}
+	if (key == GLUT_KEY_F2)
+	{
+		//Creation d'un programme de shader, avec vertex et fragment shaders
+		g_program = g_renderer->createProgram("shaders/pshader.glsl", "shaders/vsbase.glsl");
+	}
+	if (key == GLUT_KEY_F3)
+	{
+		//Creation d'un programme de shader, avec vertex et fragment shaders
+		g_program = g_renderer->createProgram("shaders/postprocess/pshader.glsl", "shaders/vsbase.glsl");
 	}
 
 }
@@ -336,26 +371,41 @@ void keyboardDownFunction(unsigned char key, int p1, int p2)
 			g_fullscreen = false;
 		}
 	}
-	switch (key)
+	
+	if (!camControl)
 	{
-	case 'z': avatar->avance = true; break;
-	case 's': avatar->recule = true; break;
-	case 'q': avatar->gauche = true; break;
-	case 'd': avatar->droite = true; break;
-	case ' ': avatar->Jump = true; break;
+		switch (key)
+		{
+		case 'z': avatar->avance = true; break;
+		case 's': avatar->recule = true; break;
+		case 'q': avatar->gauche = true; break;
+		case 'd': avatar->droite = true; break;
+		case ' ': avatar->Jump = true; break;
+		}
+	}
+	else
+	{
+		cam.inputDown(key);
 	}
 }
 
 void keyboardUpFunction(unsigned char key, int p1, int p2)
 {
-	switch (key)
+	if (!camControl)
 	{
-	case 'z': avatar->avance = false; break;
-	case 's': avatar->recule = false; break;
-	case 'q': avatar->gauche = false; break;
-	case 'd': avatar->droite = false; break;
-	case 'a': avatar->pickCube();
+		switch (key)
+		{
+		case 'z': avatar->avance = false; break;
+		case 's': avatar->recule = false; break;
+		case 'q': avatar->gauche = false; break;
+		case 'd': avatar->droite = false; break;
+		case 'a': avatar->pickCube();
+		}
 	}
+		else
+		{
+			cam.inputUp(key);
+		}
 }
 
 void mouseWheelFunction(int wheel, int dir, int x, int y)
@@ -529,6 +579,11 @@ int main(int argc, char* argv[])
 	glutPassiveMotionFunc(mouseMovePassiveFunction);
 	glutIgnoreKeyRepeat(1);
 
+	//Dans le main, à l'initialisation du moteur de rendu
+
+
+
+
 	//Initialisation du renderer
 	g_renderer = NYRenderer::getInstance();
 	g_renderer->setRenderObjectFun(renderObjects);
@@ -536,6 +591,11 @@ int main(int argc, char* argv[])
 	g_renderer->setLightsFun(setLightsBasedOnDayTime);
 	g_renderer->setBackgroundColor(NYColor());
 	g_renderer->initialise();
+
+	//Active le post process (chargera le shader de post process "postprocess/pshader.glsl")
+	g_renderer->initialise(true);
+	//Creation d'un programme de shader, avec vertex et fragment shaders
+	g_program = g_renderer->createProgram("shaders/psbase.glsl", "shaders/vsbase.glsl");
 
 	//On applique la config du renderer
 	glViewport(0, 0, g_renderer->_ScreenWidth, g_renderer->_ScreenHeight);
@@ -607,7 +667,7 @@ int main(int argc, char* argv[])
 	//Fin init moteur
 
 	//Init application
-
+	cam.camera = g_renderer->_Camera;
 	//Changement de la couleur de fond
 	NYColor skyColor(0, 181.f / 255.f, 221.f / 255.f, 1);
 	g_renderer->setBackgroundColor(skyColor);

@@ -22,6 +22,10 @@ class NYAvatar
 		bool droite;
 		bool Standing;
 
+		bool fly = false;
+		bool collide = true;
+
+
 		NYCamera * Cam;
 		NYWorld * World;
 
@@ -72,7 +76,9 @@ class NYAvatar
 		void update(float elapsed)
 		{
 			//Par defaut, on applique la gravité (-100 sur Z)si
-			NYVert3Df force = NYVert3Df(0, 0, -1) * 100.0f;
+			NYVert3Df force =  NYVert3Df(0, 0, 0) * 100.0f;;
+				if (!fly)
+			force = NYVert3Df(0, 0, -1) * 100.0f;
 
 			//Si l'avatar n'est pas au sol, alors il ne peut pas sauter
 			if (!Standing)
@@ -80,7 +86,7 @@ class NYAvatar
 
 
 			//Si il est au sol, on applique les controles "ground"
-			if (Standing)
+			if (Standing && !fly)
 			{
 				if (avance)
 					force += Cam->_Direction * 400;
@@ -128,60 +134,63 @@ class NYAvatar
 			NYVert3Df oldPosition = Position;
 			Position += (Speed * elapsed);
 
-			//On recup la collision a la nouvelle position
-			NYCollision collidePrinc = 0x00;
-			NYCollision collide = World->collide_with_world(Position, Width, Height, collidePrinc);
-			if (collide & NY_COLLIDE_BOTTOM && Speed.Z < 0)
+			if (collide)
 			{
-				Position.Z = oldPosition.Z;
-				Speed *= pow(0.01f, elapsed);
-				Speed.Z = 0;
-				Standing = true;
-			}
-			else
-				Standing = false;
+				//On recup la collision a la nouvelle position
+				NYCollision collidePrinc = 0x00;
+				NYCollision collide = World->collide_with_world(Position, Width, Height, collidePrinc);
+				if (collide & NY_COLLIDE_BOTTOM && Speed.Z < 0)
+				{
+					Position.Z = oldPosition.Z;
+					Speed *= pow(0.01f, elapsed);
+					Speed.Z = 0;
+					Standing = true;
+				}
+				else
+					Standing = false;
 
-			if (collide & NY_COLLIDE_UP && !Standing && Speed.Z > 0)
-			{
-				Position.Z = oldPosition.Z;
-				Speed.Z = 0;
-			}
+				if (collide & NY_COLLIDE_UP && !Standing && Speed.Z > 0)
+				{
+					Position.Z = oldPosition.Z;
+					Speed.Z = 0;
+				}
 
-			//On a regle le probleme du bottom et up, on gère les collision sur le plan (x,y)
-			collide = World->collide_with_world(Position, Width, Height, collidePrinc);
+				//On a regle le probleme du bottom et up, on gère les collision sur le plan (x,y)
+				collide = World->collide_with_world(Position, Width, Height, collidePrinc);
 
-			//En fonction des cotés, on annule une partie des déplacements
-			if (collide & NY_COLLIDE_BACK && collide & NY_COLLIDE_RIGHT && collide & NY_COLLIDE_LEFT)
-			{
-				Position.Y = oldPosition.Y;
-				Speed.Y = 0;
-			}
-
-			if (collide & NY_COLLIDE_FRONT && collide & NY_COLLIDE_RIGHT && collide & NY_COLLIDE_LEFT)
-			{
-				Position.Y = oldPosition.Y;
-				Speed.Y = 0;
-			}
-
-			if (collide & NY_COLLIDE_RIGHT && collide & NY_COLLIDE_FRONT && collide & NY_COLLIDE_BACK)
-			{
-				Position.X = oldPosition.X;
-				Speed.X = 0;
-			}
-
-			if (collide & NY_COLLIDE_LEFT && collide & NY_COLLIDE_FRONT && collide & NY_COLLIDE_BACK)
-			{
-				Position.X = oldPosition.X;
-				Speed.X = 0;
-			}
-
-			//Si je collide sur un angle
-			if (!(collide & NY_COLLIDE_BACK && collide & NY_COLLIDE_FRONT) && !(collide & NY_COLLIDE_LEFT && collide & NY_COLLIDE_RIGHT))
-				if (collide & (NY_COLLIDE_BACK | NY_COLLIDE_FRONT | NY_COLLIDE_RIGHT | NY_COLLIDE_LEFT))
+				//En fonction des cotés, on annule une partie des déplacements
+				if (collide & NY_COLLIDE_BACK && collide & NY_COLLIDE_RIGHT && collide & NY_COLLIDE_LEFT)
 				{
 					Position.Y = oldPosition.Y;
-					Position.X = oldPosition.X;
+					Speed.Y = 0;
 				}
+
+				if (collide & NY_COLLIDE_FRONT && collide & NY_COLLIDE_RIGHT && collide & NY_COLLIDE_LEFT)
+				{
+					Position.Y = oldPosition.Y;
+					Speed.Y = 0;
+				}
+
+				if (collide & NY_COLLIDE_RIGHT && collide & NY_COLLIDE_FRONT && collide & NY_COLLIDE_BACK)
+				{
+					Position.X = oldPosition.X;
+					Speed.X = 0;
+				}
+
+				if (collide & NY_COLLIDE_LEFT && collide & NY_COLLIDE_FRONT && collide & NY_COLLIDE_BACK)
+				{
+					Position.X = oldPosition.X;
+					Speed.X = 0;
+				}
+
+				//Si je collide sur un angle
+				if (!(collide & NY_COLLIDE_BACK && collide & NY_COLLIDE_FRONT) && !(collide & NY_COLLIDE_LEFT && collide & NY_COLLIDE_RIGHT))
+					if (collide & (NY_COLLIDE_BACK | NY_COLLIDE_FRONT | NY_COLLIDE_RIGHT | NY_COLLIDE_LEFT))
+					{
+						Position.Y = oldPosition.Y;
+						Position.X = oldPosition.X;
+					}
+			}
 		}
 };
 

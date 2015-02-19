@@ -49,4 +49,10 @@
     <ClInclude Include="..\src\avatar.h" />
     <ClInclude Include="my_physics.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\run\shaders\psbase.glsl" />
+    <None Include="..\run\shaders\vsbase.glsl" />
+    <None Include="..\run\shaders\postprocess\pshader.glsl" />
+    <None Include="..\run\shaders\pshader.glsl" />
+  </ItemGroup>
 </Project>
