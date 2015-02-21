@@ -70,10 +70,14 @@ void update(void)
 	float elapsed = g_timer->getElapsedSeconds(true);
 
 	static float g_eval_elapsed = 0;
-
 	//Calcul des fps
 	g_elapsed_fps += elapsed;
 	g_nb_frames++;
+
+	//Tweak time
+	if (g_fast_time)
+		g_tweak_time += elapsed * 120.0f;
+
 	if(g_elapsed_fps > 1.0)
 	{
 		LabelFps->Text = std::string("FPS : ") + toString(g_nb_frames);
@@ -180,7 +184,7 @@ void renderObjects(void)
 
 
 
-
+	renderSun();
 	glPushMatrix();
 	g_world->render_world_vbo();
 	glPopMatrix();
@@ -234,7 +238,9 @@ bool getSunDirection(NYVert3Df & sun, float mnLever, float mnCoucher)
 		g_tweak_time -= 24 * 60;
 
 	//Temps écoulé depuis le début de la journée
-	float fTime = (float)(t.wHour * 60 + t.wMinute);
+	
+	float fTime;
+	fTime = (float)(t.wHour * 60 + t.wMinute);
 	fTime += g_tweak_time;
 	while (fTime > 24 * 60)
 		fTime -= 24 * 60;
@@ -352,6 +358,8 @@ void specialUpFunction(int key, int p1, int p2)
 
 void keyboardDownFunction(unsigned char key, int p1, int p2)
 {
+	if (key == 'g')
+		g_fast_time = !g_fast_time;
 	if(key == VK_ESCAPE)
 	{
 		glutDestroyWindow(g_main_window_id);	

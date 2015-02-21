@@ -20,9 +20,10 @@ typedef uint8 NYCollision;
 #define NY_COLLIDE_IN     0x40
 
 #define MAT_SIZE 32 //en nombre de chunks
-#define MAT_HEIGHT 2 //en nombre de chunks
+#define MAT_HEIGHT 3 //en nombre de chunks
 #define MAT_SIZE_CUBES (MAT_SIZE * NYChunk::CHUNK_SIZE)
-#define MAT_HEIGHT_CUBES (MAT_HEIGHT * NYChunk::CHUNK_SIZE)
+#define MAT_HEIGHT_CUBES (32)
+//#define MAT_HEIGHT_CUBES (MAT_HEIGHT * NYChunk::CHUNK_SIZE)
 
 
 class NYWorld
@@ -160,7 +161,7 @@ public :
 		if ((x3 - x1) <= 1 && (y3 - y1) <= 1)
 			return;
 
-		int largeurRandom = (int)(MAT_HEIGHT_CUBES / (prof*_FacteurGeneration));
+		int largeurRandom = (int)(32 / (prof*_FacteurGeneration));
 		if (largeurRandom == 0)
 			largeurRandom = 1;
 
@@ -235,6 +236,51 @@ public :
 		generate_piles(xd, yd, xe, ye, xc, yc, x4, y4, prof + 1, profMax);
 	}
 
+	void generate_tree(int x, int y, int z)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			getCube(x, y, z + i)->_Type = CUBE_TERRE;
+		}
+
+		//Etage 1
+		generate_feuille(1, x - 2, y, z + 3);
+		generate_feuille(2, x - 1, y, z + 3);
+		generate_feuille(2, x, y, z + 3);
+		generate_feuille(2, x + 1, y, z + 3);
+		generate_feuille(1, x + 2, y, z + 3);
+
+		//Etage 2
+		generate_feuille(0, x - 3, y, z + 4);
+		generate_feuille(2, x - 2, y, z + 4);
+		generate_feuille(2, x - 1, y, z + 4);
+		generate_feuille(3, x, y, z + 4);
+		generate_feuille(2, x + 1, y, z + 4);
+		generate_feuille(2, x + 2, y, z + 4);
+		generate_feuille(0, x + 3, y, z + 4);
+
+		//Etage 3
+		generate_feuille(1, x - 1, y, z + 5);
+		generate_feuille(1, x, y, z + 5);
+		generate_feuille(1, x + 1, y, z + 5);
+
+		//Etage 4
+		generate_feuille(0, x - 1, y, z + 6);
+		generate_feuille(1, x, y, z + 6);
+		generate_feuille(0, x + 1, y, z + 6);
+
+		//Etage 5
+		generate_feuille(0, x, y, z + 7);
+	}
+
+	void generate_feuille(int largeur, int x, int y, int z)
+	{
+		for (int i = 0; i <= largeur; i++)
+		{
+				getCube(x, y + i, z)->_Type = CUBE_HERBE;
+				getCube(x, y - i, z)->_Type = CUBE_HERBE;
+		}
+	}
 
 	//On utilise un matrice temporaire _MatriceHeightsTmp à déclarer
 	//Penser à appeler la fonction a la fin de la génération (plusieurs fois si besoin)
@@ -302,8 +348,11 @@ public :
 			MAT_SIZE_CUBES-1,0,
 			MAT_SIZE_CUBES-1,MAT_SIZE_CUBES-1,
 			0,MAT_SIZE_CUBES-1,1,profmax);	
+		
+
 		lisse();
 
+		generate_tree(10,10,12);
 
 		for(int x=0;x<MAT_SIZE;x++)
 			for(int y=0;y<MAT_SIZE;y++)

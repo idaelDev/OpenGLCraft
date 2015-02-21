@@ -13,7 +13,7 @@ void main()
 	gl_Vertex = invertView *  gl_ModelViewMatrix * gl_Vertex;
 	if(gl_Vertex.z <= 12)
 	{
-		gl_Vertex.z += sin(elapsed*5 + gl_Vertex.x *0.5) *5;
+		gl_Vertex.z += sin(elapsed + gl_Vertex.x *0.5) *5;
 		//gl_Vertex.z += sin(elapsed*5 + gl_Vertex.y *0.5) *5;
 	}
 	gl_Position = gl_ProjectionMatrix * inverse(invertView) * gl_Vertex;
