@@ -2,7 +2,6 @@
 varying vec3 normal;
 varying vec3 vertex_to_light_vector;
 varying vec4 color;
-
 uniform float elapsed;
 uniform mat4 invertView;
  
@@ -26,6 +25,4 @@ void main()
 
 	//Couleur
 	color = gl_Color;
-
-
 }
