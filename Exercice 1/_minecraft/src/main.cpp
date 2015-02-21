@@ -163,10 +163,10 @@ void renderObjects(void)
 	glVertex3d(0,0,10000);
 	glEnd();
 
-	//GLfloat ld[3];
-	//g_sun_dir.createTab(ld);
-	//glEnable(GL_LIGHTING);
+	
+	glEnable(GL_LIGHTING);
 
+	//Au lieu de rendre notre cube dans sa sphère (mais on laisse le soleil)
 	glUseProgram(g_program);
 
 	GLuint elap = glGetUniformLocation(g_program, "elapsed");
@@ -177,9 +177,6 @@ void renderObjects(void)
 
 	GLuint invView = glGetUniformLocation(g_program, "invertView");
 	glUniformMatrix4fv(invView, 1, true, g_renderer->_Camera->_InvertViewMatrix.Mat.t);
-
-	//GLuint lightDir = glGetUniformLocation(g_program, "lightDir");
-	//glUniformMatrix3fv(lightDir, 1, true, ld);
 
 
 
