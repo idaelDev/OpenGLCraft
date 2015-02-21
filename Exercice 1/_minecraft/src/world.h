@@ -10,8 +10,6 @@
 #include "../base/Primitive.h"
 #include "../base/my_physics.h"
 
-#include "engine/render/graph/tex_manager.h"
-
 typedef uint8 NYCollision;
 #define NY_COLLIDE_UP     0x01
 #define NY_COLLIDE_BOTTOM 0x02
@@ -34,8 +32,6 @@ public :
 	int _MatriceHeights[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
 	float _FacteurGeneration;
 	int _MatriceHeightsTmp[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
-
-	NYTexFile * _TexGrass;
 
 	NYWorld()
 	{
@@ -284,8 +280,6 @@ public :
 
 	void init_world(int profmax = -1)
 	{
-
-		_TexGrass = NYTexManager::getInstance()->loadTexture(std::string("grass.png"));
 		_cprintf("Creation du monde %f \n",_FacteurGeneration);
 
 		srand(6665);
@@ -494,18 +488,13 @@ public :
 
 	void render_world_vbo(void)
 	{
-
-		glEnable(GL_TEXTURE_2D);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, _TexGrass->Texture);
-
-		for (int x = 0; x<MAT_SIZE; x++)
-			for (int y = 0; y<MAT_SIZE; y++)
-				for (int z = 0; z<MAT_HEIGHT; z++)
+		for(int x=0;x<MAT_SIZE;x++)
+			for(int y=0;y<MAT_SIZE;y++)
+				for(int z=0;z<MAT_HEIGHT;z++)
 				{
 					glPushMatrix();
-					glTranslatef((float)(x*NYChunk::CHUNK_SIZE*NYCube::CUBE_SIZE), (float)(y*NYChunk::CHUNK_SIZE*NYCube::CUBE_SIZE), (float)(z*NYChunk::CHUNK_SIZE*NYCube::CUBE_SIZE));
-					_Chunks[x][y][z]->render();
+					glTranslatef((float)(x*NYChunk::CHUNK_SIZE*NYCube::CUBE_SIZE),(float)(y*NYChunk::CHUNK_SIZE*NYCube::CUBE_SIZE),(float)(z*NYChunk::CHUNK_SIZE*NYCube::CUBE_SIZE));
+					_Chunks[x][y][z]->render();	
 					glPopMatrix();
 				}
 	}
