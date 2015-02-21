@@ -11,7 +11,7 @@ void main()
 
 	// Transforming The Vertex
 	gl_Vertex = invertView *  gl_ModelViewMatrix * gl_Vertex;
-	if(gl_Vertex.z <= 10)
+	if(gl_Vertex.z <= 12)
 	{
 		gl_Vertex.z += sin(elapsed*5 + gl_Vertex.x *0.5) *5;
 		//gl_Vertex.z += sin(elapsed*5 + gl_Vertex.y *0.5) *5;
@@ -20,7 +20,7 @@ void main()
 
 	// Transforming The Normal To ModelView-Space
 	normal = gl_NormalMatrix * gl_Normal; 
-
+	//gl_Position = ftransform();
 	//Direction lumiere
 	vertex_to_light_vector = vec3(gl_LightSource[0].position);
 

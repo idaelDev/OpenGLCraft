@@ -27,7 +27,7 @@ float random( float f ) {
     float  r2 = uintBitsToFloat( h );
     return r2 - 1.0;
 }
-
+/*
 void main()
 {
 	// Scaling The Input Vector To Length 1
@@ -45,4 +45,26 @@ void main()
 	//float r = random(color);
 
 	//gl_FragColor = vec4( r,r,r, 1.0 );
+}
+*/
+
+void main()
+{
+	float intensity;
+	vec3 n = normalize(normal);
+	intensity = dot(vec3(gl_LightSource[0].position),n);
+
+		// Calculating The Diffuse Term And Clamping It To [0;1]
+	float DiffuseTerm = clamp(dot(normal, vertex_to_light_vector), 0.0, 1.0);
+
+	if (intensity > 0.98)
+		color *= vec4(0.8,0.8,0.8,1.0); 
+	else if (intensity > 0.5) 
+		color *= vec4(0.4,0.4,0.8,1.0); 
+	else if (intensity > 0.25) 
+		color *= vec4(0.2,0.2,0.4,1.0); 
+	else color *= vec4(0.1,0.1,0.1,1.0); 
+	//else color = vec4(1.0,0.1,0.1,1.0); 
+	gl_FragColor = color * (DiffuseTerm*(1-ambientLevel) + ambientLevel);
+	gl_FragColor.a = color.a;
 }
