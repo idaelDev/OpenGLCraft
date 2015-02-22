@@ -33,7 +33,7 @@ public :
 	int _MatriceHeights[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
 	float _FacteurGeneration;
 	int _MatriceHeightsTmp[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
-
+	int NB_TREE = 500;
 	NYWorld()
 	{
 		_FacteurGeneration = 1.0;
@@ -236,11 +236,27 @@ public :
 		generate_piles(xd, yd, xe, ye, xc, yc, x4, y4, prof + 1, profMax);
 	}
 
+	void generate_forest(int nb)
+	{
+		int x, y;
+		for (int i = 0; i < nb; i++)
+		{
+			x = rand() % MAT_SIZE_CUBES;
+			y = rand() % MAT_SIZE_CUBES;
+			if (getCube(x, y, _MatriceHeights[x][y]-1)->_Type != CUBE_EAU)
+			{
+				generate_tree(x, y, _MatriceHeights[x][y]);
+			}
+			
+		}
+	}
+
 	void generate_tree(int x, int y, int z)
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			getCube(x, y, z + i)->_Type = CUBE_TERRE;
+			getCube(x, y, z + i)->_Draw = true;
+			getCube(x, y, z + i)->_Type = CUBE_BOIS;
 		}
 
 		//Etage 1
@@ -277,8 +293,10 @@ public :
 	{
 		for (int i = 0; i <= largeur; i++)
 		{
-				getCube(x, y + i, z)->_Type = CUBE_HERBE;
-				getCube(x, y - i, z)->_Type = CUBE_HERBE;
+			getCube(x, y + i, z)->_Draw = true;
+			getCube(x, y + i, z)->_Type = CUBE_FEUILLE;
+			getCube(x, y - i, z)->_Draw = true;
+			getCube(x, y - i, z)->_Type = CUBE_FEUILLE;
 		}
 	}
 
@@ -352,7 +370,7 @@ public :
 
 		lisse();
 
-		generate_tree(10,10,12);
+		generate_forest(NB_TREE);
 
 		for(int x=0;x<MAT_SIZE;x++)
 			for(int y=0;y<MAT_SIZE;y++)

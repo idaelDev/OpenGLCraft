@@ -57,14 +57,13 @@ void main()
 		// Calculating The Diffuse Term And Clamping It To [0;1]
 	float DiffuseTerm = clamp(dot(normal, vertex_to_light_vector), 0.0, 1.0);
 
-	if (intensity > 0.98)
-		color *= vec4(0.8,0.8,0.8,1.0); 
+	if (intensity > 0.95)
+		color *= vec4(1.0,0.7,0.7,1.0); 
 	else if (intensity > 0.5) 
-		color *= vec4(0.4,0.4,0.8,1.0); 
+		color *= vec4(0.8,0.5,0.5,1.0); 
 	else if (intensity > 0.25) 
-		color *= vec4(0.2,0.2,0.4,1.0); 
-	else color *= vec4(0.1,0.1,0.1,1.0); 
-	//else color = vec4(1.0,0.1,0.1,1.0); 
+		color *= vec4(0.6,0.4,0.4,1.0); 
+	else color *= vec4(0.4,0.3,0.3,1.0); 
 	gl_FragColor = color * (DiffuseTerm*(1-ambientLevel) + ambientLevel);
 	gl_FragColor.a = color.a;
 }

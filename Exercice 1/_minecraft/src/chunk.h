@@ -193,13 +193,17 @@ class NYChunk
 								color[2] = 255.0f / 255.0f;
 								break;
 							case CUBE_BOIS:
-								color[0] = 128.0f / 255.0f;
-								color[1] = 0.0f / 255.0f;
+								color[0] = 128.0 / 255.0f;
+								color[1] = 50.0f / 255.0f;
 								color[2] = 0.0f / 255.0f;
+								break;
 							case CUBE_FEUILLE:
-								color[0] = 0.0f / 255.0f;
-								color[1] = 128.0f / 255.0f;
+								color[0] = 12.0 / 255.0f;
+								color[1] = 128.0 / 255.0f;
 								color[2] = 0.0f / 255.0f;
+								break;
+							finally:
+								break;
 							}
 
 							//Position du cube (coin bas gauche face avant)
