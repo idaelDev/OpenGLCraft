@@ -16,7 +16,7 @@ void main()
 	normal = gl_NormalMatrix * gl_Normal; 
 	if(gl_Vertex.z <= 12)
 	{
-		gl_Vertex.z += sin(elapsed * 15 + (gl_Vertex.y + gl_Vertex.x) );
+		gl_Vertex.z += sin(elapsed * 10 + (gl_Vertex.y + gl_Vertex.x) );
 		normal.x += sin(elapsed * 0.2 + (gl_Vertex.x + gl_Vertex.y) * 5);
 		normal.y += sin(elapsed * 0.2 + (gl_Vertex.x + gl_Vertex.y * 2));
 		//normal.z += sin(elapsed * 2 + (gl_Vertex.z));
@@ -24,6 +24,7 @@ void main()
 		//normal.x += sin(elapsed * 2 + (gl_Vertex.x + gl_Vertex.y  )* 6 );
 	}
 	gl_Position = gl_ProjectionMatrix * inverse(invertView) * gl_Vertex;
+
 
 	//gl_Position = ftransform();
 	//Direction lumiere

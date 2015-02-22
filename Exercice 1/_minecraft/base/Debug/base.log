@@ -1,4 +1,4 @@
-﻿La génération a démarré 22/02/2015 16:44:24.
+﻿La génération a démarré 22/02/2015 18:09:53.
      1>Projet "D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../src /I../src/external /I../../_engine/src /I../../_engine/src/external /I../../_engine/src/external/bullet/src /ZI /nologo /W3 /WX- /Od /Oy- /D LOG_FILE /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D TETLIBRARY /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\main.cpp
@@ -34,11 +34,11 @@
      1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(760): warning C4244: 'argument' : conversion de 'const int' en 'float', perte possible de données
      1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(761): warning C4244: 'argument' : conversion de 'const int' en 'float', perte possible de données
      1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(762): warning C4244: 'argument' : conversion de 'const int' en 'float', perte possible de données
-     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(180): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(256): warning C4305: '*=' : troncation de 'double' à 'float'
-     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(264): warning C4305: '*=' : troncation de 'double' à 'float'
-     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(292): warning C4305: 'argument' : troncation de 'double' à 'float'
-     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(294): warning C4305: 'argument' : troncation de 'double' à 'float'
+     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(182): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(257): warning C4305: '*=' : troncation de 'double' à 'float'
+     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(265): warning C4305: '*=' : troncation de 'double' à 'float'
+     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(293): warning C4305: 'argument' : troncation de 'double' à 'float'
+     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(295): warning C4305: 'argument' : troncation de 'double' à 'float'
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib /LIBPATH:../../_engine/lib libpng16.lib libcurl.lib openal32.lib alut_d.lib glew32.lib freeglut.lib Kernel32.lib Psapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.lib" /MACHINE:X86 /SAFESEH Debug\log.obj
          Debug\renderer.obj
@@ -52,4 +52,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:01.05
+Temps écoulé 00:00:01.01

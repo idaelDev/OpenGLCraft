@@ -114,6 +114,7 @@ void renderSun()
 	sunEmissionMaterial[2] = g_sun_color.B;
 	glMaterialfv(GL_FRONT, GL_EMISSION, sunEmissionMaterial);
 
+	glColor3d(0.8, 0.5, 0);
 	//On dessine un cube pour le soleil
 	glutSolidCube(50.0f);
 
@@ -169,6 +170,7 @@ void renderObjects(void)
 
 	
 	glEnable(GL_LIGHTING);
+	renderSun();
 
 	//Au lieu de rendre notre cube dans sa sphère (mais on laisse le soleil)
 	glUseProgram(g_program);
@@ -184,7 +186,6 @@ void renderObjects(void)
 
 
 
-	renderSun();
 	glPushMatrix();
 	g_world->render_world_vbo();
 	glPopMatrix();
