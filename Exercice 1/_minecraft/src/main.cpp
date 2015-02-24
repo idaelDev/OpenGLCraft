@@ -342,7 +342,7 @@ void specialDownFunction(int key, int p1, int p2)
 	if (key == GLUT_KEY_F2)
 	{
 		//Creation d'un programme de shader, avec vertex et fragment shaders
-		g_program = g_renderer->createProgram("shaders/pshader.glsl", "shaders/vsbase.glsl");
+		g_program = g_renderer->createProgram("shaders/pToon.glsl", "shaders/vToon.glsl");
 	}
 	if (key == GLUT_KEY_F3)
 	{

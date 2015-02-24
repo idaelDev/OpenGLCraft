@@ -8,7 +8,6 @@ uniform mat4 invertView;
  
 void main()
 {
-
 	// Transforming The Vertex
 	gl_Vertex = invertView *  gl_ModelViewMatrix * gl_Vertex;
 
@@ -25,14 +24,10 @@ void main()
 	}
 	gl_Position = gl_ProjectionMatrix * inverse(invertView) * gl_Vertex;
 
-
 	//gl_Position = ftransform();
 	//Direction lumiere
 	vertex_to_light_vector = vec3(gl_LightSource[0].position);
 
 	//Couleur
 	color = gl_Color;
-
-
-
 }

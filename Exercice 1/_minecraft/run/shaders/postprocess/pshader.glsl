@@ -16,6 +16,7 @@ void main (void)
 	float ystep = 1.0/screen_height;
 	float ratio = screen_width / screen_height;
 
+
 	vec4 color = texture2D( Texture0 , vec2( gl_TexCoord[0] ) );
 	float depth = texture2D( Texture1 , vec2( gl_TexCoord[0] ) ).r;	
 	
@@ -23,4 +24,8 @@ void main (void)
 	depth = LinearizeDepth(depth);
 
 	gl_FragColor = color;
+
+	float depthBottomRight = LinearizeDepth(texture2D( Texture1 , vec2( gl_TexCoord[0].x+xstep, gl_TexCoord[0].y+ystep) ).r);
+
+	gl_FragColor = vec4(color.rgb * (1.0-abs(depth-depthBottomRight)*256.0),color.a);
 }
