@@ -20,9 +20,10 @@ typedef uint8 NYCollision;
 #define NY_COLLIDE_IN     0x40
 
 #define MAT_SIZE 32 //en nombre de chunks
-#define MAT_HEIGHT 2 //en nombre de chunks
+#define MAT_HEIGHT 3 //en nombre de chunks
 #define MAT_SIZE_CUBES (MAT_SIZE * NYChunk::CHUNK_SIZE)
-#define MAT_HEIGHT_CUBES (MAT_HEIGHT * NYChunk::CHUNK_SIZE)
+#define MAT_HEIGHT_CUBES (32)
+//#define MAT_HEIGHT_CUBES (MAT_HEIGHT * NYChunk::CHUNK_SIZE)
 
 
 class NYWorld
@@ -32,7 +33,7 @@ public :
 	int _MatriceHeights[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
 	float _FacteurGeneration;
 	int _MatriceHeightsTmp[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
-
+	int NB_TREE = 500;
 	NYWorld()
 	{
 		_FacteurGeneration = 1.0;
@@ -160,7 +161,7 @@ public :
 		if ((x3 - x1) <= 1 && (y3 - y1) <= 1)
 			return;
 
-		int largeurRandom = (int)(MAT_HEIGHT_CUBES / (prof*_FacteurGeneration));
+		int largeurRandom = (int)(32 / (prof*_FacteurGeneration));
 		if (largeurRandom == 0)
 			largeurRandom = 1;
 
@@ -235,6 +236,69 @@ public :
 		generate_piles(xd, yd, xe, ye, xc, yc, x4, y4, prof + 1, profMax);
 	}
 
+	void generate_forest(int nb)
+	{
+		int x, y;
+		for (int i = 0; i < nb; i++)
+		{
+			x = rand() % MAT_SIZE_CUBES;
+			y = rand() % MAT_SIZE_CUBES;
+			if (getCube(x, y, _MatriceHeights[x][y]-1)->_Type != CUBE_EAU)
+			{
+				generate_tree(x, y, _MatriceHeights[x][y]);
+			}
+			
+		}
+	}
+
+	void generate_tree(int x, int y, int z)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			getCube(x, y, z + i)->_Draw = true;
+			getCube(x, y, z + i)->_Type = CUBE_BOIS;
+		}
+
+		//Etage 1
+		generate_feuille(1, x - 2, y, z + 3);
+		generate_feuille(2, x - 1, y, z + 3);
+		generate_feuille(2, x, y, z + 3);
+		generate_feuille(2, x + 1, y, z + 3);
+		generate_feuille(1, x + 2, y, z + 3);
+
+		//Etage 2
+		generate_feuille(0, x - 3, y, z + 4);
+		generate_feuille(2, x - 2, y, z + 4);
+		generate_feuille(2, x - 1, y, z + 4);
+		generate_feuille(3, x, y, z + 4);
+		generate_feuille(2, x + 1, y, z + 4);
+		generate_feuille(2, x + 2, y, z + 4);
+		generate_feuille(0, x + 3, y, z + 4);
+
+		//Etage 3
+		generate_feuille(1, x - 1, y, z + 5);
+		generate_feuille(1, x, y, z + 5);
+		generate_feuille(1, x + 1, y, z + 5);
+
+		//Etage 4
+		generate_feuille(0, x - 1, y, z + 6);
+		generate_feuille(1, x, y, z + 6);
+		generate_feuille(0, x + 1, y, z + 6);
+
+		//Etage 5
+		generate_feuille(0, x, y, z + 7);
+	}
+
+	void generate_feuille(int largeur, int x, int y, int z)
+	{
+		for (int i = 0; i <= largeur; i++)
+		{
+			getCube(x, y + i, z)->_Draw = true;
+			getCube(x, y + i, z)->_Type = CUBE_FEUILLE;
+			getCube(x, y - i, z)->_Draw = true;
+			getCube(x, y - i, z)->_Type = CUBE_FEUILLE;
+		}
+	}
 
 	//On utilise un matrice temporaire _MatriceHeightsTmp à déclarer
 	//Penser à appeler la fonction a la fin de la génération (plusieurs fois si besoin)
@@ -302,8 +366,11 @@ public :
 			MAT_SIZE_CUBES-1,0,
 			MAT_SIZE_CUBES-1,MAT_SIZE_CUBES-1,
 			0,MAT_SIZE_CUBES-1,1,profmax);	
+		
+
 		lisse();
 
+		generate_forest(NB_TREE);
 
 		for(int x=0;x<MAT_SIZE;x++)
 			for(int y=0;y<MAT_SIZE;y++)

@@ -8,7 +8,9 @@ enum NYCubeType
 	CUBE_HERBE,
 	CUBE_EAU,
 	CUBE_TERRE, 
-	CUBE_AIR
+	CUBE_AIR,
+	CUBE_BOIS,
+	CUBE_FEUILLE
 };
 
 class NYCube
@@ -66,8 +68,14 @@ class NYCube
 				col.Y = 1;
 				col.Z = 1;
 				break;
-			default:
-				break;
+			case CUBE_BOIS:
+				col.X = 128.0f / 255.0f;
+				col.Y = 0.0f / 255.0f;
+				col.Z = 0.0f / 255.0f;
+			case CUBE_FEUILLE:
+				col.X = 0.0f / 255.0f;
+				col.Y = 128.0f / 255.0f;
+				col.Z = 0.0f / 255.0f;
 			}
 			Primitive::makeMat(col.X, col.Y, col.Z);
 			return col;
