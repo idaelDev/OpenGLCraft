@@ -1,39 +1,38 @@
-﻿Build started 26/02/2015 10:29:26.
+﻿Build started 26/02/2015 10:57:26.
      1>Project "C:\Users\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../src /I../src/external /I../../_engine/src /I../../_engine/src/external /I../../_engine/src/external/bullet/src /ZI /nologo /W3 /WX- /Od /Oy- /D LOG_FILE /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D TETLIBRARY /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\main.cpp
          main.cpp
      1>c:\users\richard\documents\github\openglcraft\exercice 1\_engine\src\engine\utils\ny_utils.h(25): warning C4005: 'NAN' : macro redefinition
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\math.h(106) : see previous definition of 'NAN'
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(76): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(196): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(201): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(202): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(205): warning C4102: 'finally' : unreferenced label
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(684): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(685): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(686): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(687): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(699): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(700): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(701): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(702): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(714): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(715): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(716): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(717): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(729): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(730): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(731): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(732): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(744): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(745): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(746): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(747): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(759): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(760): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(761): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(762): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(78): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_engine\src\engine\render\graph\tex_manager.h(233): warning C4244: '=' : conversion from 'float' to 'png_byte', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_engine\src\engine\render\graph\tex_manager.h(234): warning C4244: '=' : conversion from 'float' to 'png_byte', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_engine\src\engine\render\graph\tex_manager.h(235): warning C4244: '=' : conversion from 'float' to 'png_byte', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(694): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(695): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(696): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(697): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(709): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(710): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(711): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(712): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(724): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(725): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(726): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(727): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(739): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(740): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(741): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(742): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(754): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(755): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(756): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(757): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(769): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(770): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(771): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(772): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
      1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(182): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
      1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(257): warning C4305: '*=' : truncation from 'double' to 'float'
      1>c:\users\richard\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(265): warning C4305: '*=' : truncation from 'double' to 'float'
@@ -47,9 +46,11 @@
          Debug\main.obj
          Debug\Perlin.obj
          Debug\Primitive.obj
-         base.vcxproj -> C:\Users\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe
-     1>Done Building Project "C:\Users\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" (Build target(s)).
+     1>log.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+     1>main.obj : error LNK2001: unresolved external symbol "private: static class NYTexManager * NYTexManager::_Instance" (?_Instance@NYTexManager@@0PAV1@A)
+     1>C:\Users\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\Users\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.90
+Time Elapsed 00:00:02.33
