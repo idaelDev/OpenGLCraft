@@ -19,11 +19,11 @@ typedef uint8 NYCollision;
 #define NY_COLLIDE_BACK   0x20
 #define NY_COLLIDE_IN     0x40
 
-#define MAT_SIZE 32 //en nombre de chunks
+#define MAT_SIZE 1 //en nombre de chunks
 #define MAT_HEIGHT 3 //en nombre de chunks
 #define MAT_SIZE_CUBES (MAT_SIZE * NYChunk::CHUNK_SIZE)
-#define MAT_HEIGHT_CUBES (32)
-//#define MAT_HEIGHT_CUBES (MAT_HEIGHT * NYChunk::CHUNK_SIZE)
+//#define MAT_HEIGHT_CUBES (32)
+#define MAT_HEIGHT_CUBES (MAT_HEIGHT * NYChunk::CHUNK_SIZE)
 
 
 class NYWorld
@@ -33,7 +33,7 @@ public :
 	int _MatriceHeights[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
 	float _FacteurGeneration;
 	int _MatriceHeightsTmp[MAT_SIZE_CUBES][MAT_SIZE_CUBES];
-	int NB_TREE = 500;
+	int NB_TREE = 1;
 	NYWorld()
 	{
 		_FacteurGeneration = 1.0;
@@ -161,7 +161,7 @@ public :
 		if ((x3 - x1) <= 1 && (y3 - y1) <= 1)
 			return;
 
-		int largeurRandom = (int)(32 / (prof*_FacteurGeneration));
+		int largeurRandom = (int)(MAT_HEIGHT_CUBES / (prof*_FacteurGeneration));
 		if (largeurRandom == 0)
 			largeurRandom = 1;
 
