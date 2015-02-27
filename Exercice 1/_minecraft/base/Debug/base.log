@@ -1,4 +1,4 @@
-﻿La génération a démarré 23/02/2015 18:56:14.
+﻿La génération a démarré 24/02/2015 19:27:32.
      1>Projet "D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../src /I../src/external /I../../_engine/src /I../../_engine/src/external /I../../_engine/src/external/bullet/src /ZI /nologo /W3 /WX- /Od /Oy- /D LOG_FILE /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D TETLIBRARY /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\main.cpp
@@ -47,9 +47,11 @@
          Debug\main.obj
          Debug\Perlin.obj
          Debug\Primitive.obj
+         LINK : D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+     1>log.obj : warning LNK4075: ' /EDITANDCONTINUE' ignoré à cause de la spécification '/SAFESEH'
          base.vcxproj -> D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe
      1>Génération du projet "D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" terminée (Build cible(s)).
 
 La génération a réussi.
 
-Temps écoulé 00:00:02.62
+Temps écoulé 00:00:03.30
