@@ -28,4 +28,5 @@ void main (void)
 	float depthBottomRight = LinearizeDepth(texture2D( Texture1 , vec2( gl_TexCoord[0].x+xstep, gl_TexCoord[0].y+ystep) ).r);
 
 	gl_FragColor = vec4(color.rgb * (1.0-abs(depth-depthBottomRight)*256.0),color.a);
+	gl_FragColor.a = 1 -(depth);
 }

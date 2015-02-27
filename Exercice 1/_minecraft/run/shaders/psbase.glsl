@@ -28,7 +28,7 @@ void main()
 	gl_FragColor = color * (DiffuseTerm*(1-ambientLevel) + ambientLevel);
 
 	gl_FragColor.a = color.a;
-
+	//gl_FragColor.a = 1 -( (gl_Position - gl_Vertex) * 0.01);
 
 
 
