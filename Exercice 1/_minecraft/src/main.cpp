@@ -55,7 +55,7 @@ bool g_fast_time = false;
 
 NYAvatar *avatar;
 GLuint g_program;
-
+bool drawShader = true;
 
 CameraController cam(NULL);
 
@@ -150,6 +150,22 @@ void render2d(void)
 	g_screen_manager->render();
 }
 
+void draw_shader()
+{
+	//Au lieu de rendre notre cube dans sa sphère (mais on laisse le soleil)
+	glUseProgram(g_program);
+
+	GLuint elap = glGetUniformLocation(g_program, "elapsed");
+	glUniform1f(elap, NYRenderer::_DeltaTimeCumul);
+
+	GLuint amb = glGetUniformLocation(g_program, "ambientLevel");
+	glUniform1f(amb, 0.4);
+
+	GLuint invView = glGetUniformLocation(g_program, "invertView");
+	glUniformMatrix4fv(invView, 1, true, g_renderer->_Camera->_InvertViewMatrix.Mat.t);
+
+}
+
 void renderObjects(void)
 {
 	//Rendu des axes
@@ -172,19 +188,8 @@ void renderObjects(void)
 	glEnable(GL_LIGHTING);
 	renderSun();
 
-	//Au lieu de rendre notre cube dans sa sphère (mais on laisse le soleil)
-	glUseProgram(g_program);
-
-	GLuint elap = glGetUniformLocation(g_program, "elapsed");
-	glUniform1f(elap, NYRenderer::_DeltaTimeCumul);
-
-	GLuint amb = glGetUniformLocation(g_program, "ambientLevel");
-	glUniform1f(amb, 0.4);
-
-	GLuint invView = glGetUniformLocation(g_program, "invertView");
-	glUniformMatrix4fv(invView, 1, true, g_renderer->_Camera->_InvertViewMatrix.Mat.t);
-
-
+	if (drawShader)
+		draw_shader();
 
 	glPushMatrix();
 	g_world->render_world_vbo();
@@ -336,18 +341,12 @@ void specialDownFunction(int key, int p1, int p2)
 	//On change de mode de camera
 	if(key == GLUT_KEY_F1)
 	{
-		//Creation d'un programme de shader, avec vertex et fragment shaders
+		drawShader = true;
 		g_program = g_renderer->createProgram("shaders/psbase.glsl", "shaders/vsbase.glsl");
 	}
 	if (key == GLUT_KEY_F2)
 	{
-		//Creation d'un programme de shader, avec vertex et fragment shaders
-		g_program = g_renderer->createProgram("shaders/pToon.glsl", "shaders/vToon.glsl");
-	}
-	if (key == GLUT_KEY_F3)
-	{
-		//Creation d'un programme de shader, avec vertex et fragment shaders
-		g_program = g_renderer->createProgram("shaders/postprocess/pshader.glsl", "shaders/vsbase.glsl");
+		drawShader = false;
 	}
 
 }
