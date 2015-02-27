@@ -12,6 +12,8 @@
     <ClCompile Include="..\src\chunk.cpp" />
     <ClCompile Include="..\src\CameraController.cpp" />
     <ClCompile Include="Perlin.cpp" />
+    <ClCompile Include="..\..\_engine\src\engine\render\graph\tex_manager.cpp" />
+    <ClCompile Include="..\..\_engine\src\engine\utils\ny_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -48,6 +50,8 @@
     <ClInclude Include="Perlin.h" />
     <ClInclude Include="..\src\avatar.h" />
     <ClInclude Include="my_physics.h" />
+    <ClInclude Include="..\..\_engine\src\engine\render\graph\tex_manager.h" />
+    <ClInclude Include="..\..\_engine\src\engine\utils\ny_utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\run\shaders\psbase.glsl" />

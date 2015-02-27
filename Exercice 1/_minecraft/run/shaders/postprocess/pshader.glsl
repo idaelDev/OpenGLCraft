@@ -23,7 +23,7 @@ void main (void)
 	//Permet de scaler la profondeur
 	depth = LinearizeDepth(depth);
 
-	//gl_FragColor = color;
+	gl_FragColor = color;
 
 	float depthBottomRight = LinearizeDepth(texture2D( Texture1 , vec2( gl_TexCoord[0].x+xstep, gl_TexCoord[0].y+ystep) ).r);
 

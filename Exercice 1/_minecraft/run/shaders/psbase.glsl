@@ -5,6 +5,7 @@ varying vec4 color;
 uniform vec3 lightDir;
 uniform float ambientLevel;
 uniform mat4 invertView;
+uniform sampler2D colorMap;
 
 void main()
 {
@@ -14,6 +15,7 @@ void main()
 
 		// Calculating The Diffuse Term And Clamping It To [0;1]
 	float DiffuseTerm = clamp(dot(normal, vertex_to_light_vector), 0.0, 1.0);
+	color = texture2D( colorMap, gl_TexCoord[0].st);
 
 	if (intensity > 0.95)
 		color *= vec4(1.0,0.9,0.9,1.0); 
@@ -24,6 +26,7 @@ void main()
 	else color *= vec4(0.6,0.5,0.5,1.0); 
 	
 	gl_FragColor = color * (DiffuseTerm*(1-ambientLevel) + ambientLevel);
+
 	gl_FragColor.a = color.a;
 
 
