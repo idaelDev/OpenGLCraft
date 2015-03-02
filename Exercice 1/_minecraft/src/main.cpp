@@ -14,13 +14,13 @@
 #include "engine/render/renderer.h"
 #include "engine/gui/screen.h"
 #include "engine/gui/screen_manager.h"
+#include "engine/render/graph/tex_manager.h"
 
 #include "../base/Primitive.h"
 //Pour avoir le monde
 #include "world.h"
 #include "CameraController.h"
 #include "avatar.h"
-
 
 //Variable globale
 NYWorld * g_world;
@@ -56,7 +56,7 @@ bool g_fast_time = false;
 NYAvatar *avatar;
 GLuint g_program;
 bool drawShader = true;
-
+NYTexFile * _skybox_day;
 CameraController cam(NULL);
 
 //////////////////////////////////////////////////////////////////////////
@@ -129,6 +129,8 @@ void renderSun()
 
 }
 
+
+
 void setLights(void)
 {
 	//On active la light 0
@@ -148,6 +150,25 @@ void setLights(void)
 void render2d(void)
 {
 	g_screen_manager->render();
+
+	//On sauve la matrice
+	glPushMatrix();
+
+	//Position du soleil
+	glTranslatef(g_renderer->_Camera->_Position.X, g_renderer->_Camera->_Position.Y, g_renderer->_Camera->_Position.Z);
+
+
+	
+}
+
+void renderSybox()
+{
+	NYVert3Df position(g_renderer->_Camera->_Position.X, g_renderer->_Camera->_Position.Y, g_renderer->_Camera->_Position.Z);
+	NYVert3Df rotation(0.0, 0.0, 0.0);
+	NYVert3Df scale(5000.0, 5000.0, 5000.0);
+	Primitive::skybox(position, rotation, scale, _skybox_day);
+
+	
 }
 
 void draw_shader()
@@ -170,23 +191,24 @@ void renderObjects(void)
 {
 	//Rendu des axes
 
-	glDisable(GL_LIGHTING);
+	//glDisable(GL_LIGHTING);
 
-	glBegin(GL_LINES);
-	glColor3d(1,0,0);
-	glVertex3d(0,0,0);
-	glVertex3d(10000,0,0);
-	glColor3d(0,1,0);
-	glVertex3d(0,0,0);
-	glVertex3d(0,10000,0);
-	glColor3d(0,0,1);
-	glVertex3d(0,0,0);
-	glVertex3d(0,0,10000);
-	glEnd();
+	//glBegin(GL_LINES);
+	//glColor3d(1,0,0);
+	//glVertex3d(0,0,0);
+	//glVertex3d(10000,0,0);
+	//glColor3d(0,1,0);
+	//glVertex3d(0,0,0);
+	//glVertex3d(0,10000,0);
+	//glColor3d(0,0,1);
+	//glVertex3d(0,0,0);
+	//glVertex3d(0,0,10000);
+	//glEnd();
 
 	
 	glEnable(GL_LIGHTING);
 	renderSun();
+
 
 	if (drawShader)
 		draw_shader();
@@ -680,9 +702,11 @@ int main(int argc, char* argv[])
 	NYColor skyColor(0, 181.f / 255.f, 221.f / 255.f, 1);
 	g_renderer->setBackgroundColor(skyColor);
 
+	//_skybox_day = NYTexManager::getInstance()->loadTexture(std::string("Day_Skybox.png"));
+	
 	//A la fin du main, on genere un monde
 	g_world = new NYWorld();
-	g_world->_FacteurGeneration = 1;
+	g_world->_FacteurGeneration = 0.3;
 	g_world->init_world();
 	//g_world->getCube(0, 0, 0)->_Type = CUBE_TERRE;
 

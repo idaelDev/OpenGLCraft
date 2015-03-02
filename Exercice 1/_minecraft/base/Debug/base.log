@@ -1,16 +1,46 @@
-﻿La génération a démarré 27/02/2015 17:50:40.
-     1>Projet "D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" sur le nœud 2 (Build cible(s)).
+﻿Build started 02/03/2015 16:59:36.
+     1>Project "C:\Users\Marine\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../src /I../src/external /I../../_engine/src /I../../_engine/src/external /I../../_engine/src/external/bullet/src /ZI /nologo /W3 /WX- /Od /Oy- /D LOG_FILE /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D TETLIBRARY /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\chunk.cpp ..\src\main.cpp
-         chunk.cpp
-     1>d:\richard\documents\github\openglcraft\exercice 1\_engine\src\engine\utils\ny_utils.h(25): warning C4005: 'NAN' : redéfinition de macro
-                 d:\program files (x86)\microsoft visual studio 12.0\vc\include\math.h(106) : voir la définition précédente de 'NAN'
-     1>d:\richard\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(78): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-         Génération de code en cours...
-         Ignoré... (aucune modification pertinente détectée)
+         E:\Visual Studio\VC\bin\CL.exe /c /I../src /I../src/external /I../../_engine/src /I../../_engine/src/external /I../../_engine/src/external/bullet/src /ZI /nologo /W3 /WX- /Od /Oy- /D LOG_FILE /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D TETLIBRARY /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\main.cpp
          main.cpp
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_engine\src\engine\utils\ny_utils.h(25): warning C4005: 'NAN' : macro redefinition
+                 e:\visual studio\vc\include\math.h(106) : see previous definition of 'NAN'
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_engine\src\engine\render\graph\tex_manager.h(233): warning C4244: '=' : conversion from 'float' to 'png_byte', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_engine\src\engine\render\graph\tex_manager.h(234): warning C4244: '=' : conversion from 'float' to 'png_byte', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_engine\src\engine\render\graph\tex_manager.h(235): warning C4244: '=' : conversion from 'float' to 'png_byte', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\chunk.h(78): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(693): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(694): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(695): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(696): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(708): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(709): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(710): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(711): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(723): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(724): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(725): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(726): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(738): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(739): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(740): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(741): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(753): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(754): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(755): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(756): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(768): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(769): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(770): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\world.h(771): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(183): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(284): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(292): warning C4305: '*=' : truncation from 'double' to 'float'
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(320): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(322): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\marine\documents\github\openglcraft\exercice 1\_minecraft\src\main.cpp(709): warning C4305: '=' : truncation from 'double' to 'float'
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib /LIBPATH:../../_engine/lib /LIBPATH:"C:\Users\judicael.abecassis\Documents\GitHub\OpenGLCraft\Exercice 1\_engine\src\external" libpng16.lib libcurl.lib openal32.lib alut_d.lib glew32.lib freeglut.lib Kernel32.lib Psapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.lib" /MACHINE:X86 /SAFESEH Debug\log.obj
+         E:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marine\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe" /INCREMENTAL /NOLOGO /LIBPATH:../lib /LIBPATH:../../_engine/lib /LIBPATH:"C:\Users\judicael.abecassis\Documents\GitHub\OpenGLCraft\Exercice 1\_engine\src\external" libpng16.lib libcurl.lib openal32.lib alut_d.lib glew32.lib freeglut.lib Kernel32.lib Psapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marine\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marine\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.lib" /MACHINE:X86 /SAFESEH Debug\log.obj
          Debug\tex_manager.obj
          Debug\renderer.obj
          Debug\ny_utils.obj
@@ -19,9 +49,9 @@
          Debug\main.obj
          Debug\Perlin.obj
          Debug\Primitive.obj
-         base.vcxproj -> D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe
-     1>Génération du projet "D:\Richard\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" terminée (Build cible(s)).
+         base.vcxproj -> C:\Users\Marine\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\Debug\base.exe
+     1>Done Building Project "C:\Users\Marine\Documents\GitHub\OpenGLCraft\Exercice 1\_minecraft\base\base.vcxproj" (Build target(s)).
 
-La génération a réussi.
+Build succeeded.
 
-Temps écoulé 00:00:00.78
+Time Elapsed 00:00:01.61

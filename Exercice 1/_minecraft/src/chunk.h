@@ -179,6 +179,8 @@ class NYChunk
 			float texY;
 			float upTexX;
 			float upTexY;
+			float downTexX;
+			float downTexY;
 			float texSizeX = 1.0f / 4.0f;
 			float texSizeY = 1.0f / 2.0f;
 			_NbVertices = 0;
@@ -204,6 +206,10 @@ class NYChunk
 								texY = 0.0f;
 								upTexX = texX;
 								upTexY = texY;
+								upTexX = texX;
+								upTexY = texY;
+								downTexX = texX;
+								downTexY = texY;
 								break;
 							case CUBE_HERBE:
 								color[0] = 1.0f / 255.0f;
@@ -213,6 +219,8 @@ class NYChunk
 								texY = 1.0f/2.0f;
 								upTexX = 0;
 								upTexY = 0;
+								downTexX = 1.0f/4.0f;
+								downTexY = 0.0f;
 								break;
 							case CUBE_EAU:
 								color[0] = 0.0f / 255.0f;
@@ -222,6 +230,8 @@ class NYChunk
 								texY = 0.0f;
 								upTexX = texX;
 								upTexY = texY;
+								downTexX = texX;
+								downTexY = texY;
 								break;
 							case CUBE_BOIS:
 								color[0] = 128.0f / 255.0f;
@@ -229,8 +239,10 @@ class NYChunk
 								color[2] = 0.0f / 255.0f;
 								texX = 1.0f / 4.0f;
 								texY = 1.0f / 2.0f;
-								upTexX = texX;
+								upTexX = 2.0/4.0;
 								upTexY = texY;
+								downTexX = upTexX;
+								downTexY = texY;
 								break;
 							case CUBE_FEUILLE:
 								color[0] = 0.0f / 255.0f;
@@ -240,6 +252,8 @@ class NYChunk
 								texY = 0.0f;
 								upTexX = texX;
 								upTexY = texY;
+								downTexX = texX;
+								downTexY = texY;
 								break;
 							}
 
@@ -269,8 +283,8 @@ class NYChunk
 								*ptVert = yPos; ptVert++;
 								*ptVert = zPos; ptVert++; _NbVertices++;
 
-								*ptUV = texX + texSizeX; ptUV++;
-								*ptUV = texY + texSizeY; ptUV++;
+								*ptUV = downTexX + texSizeX; ptUV++;
+								*ptUV = downTexY + texSizeY; ptUV++;
 
 								*ptCols = color[0] + (rand() % 100) / 2000.0f; ptCols++;
 								*ptCols = color[1] + (rand() % 100) / 2000.0f; ptCols++;
@@ -286,8 +300,8 @@ class NYChunk
 								*ptVert = yPos + NYCube::CUBE_SIZE; ptVert++;
 								*ptVert = zPos; ptVert++; _NbVertices++;
 
-								*ptUV = texX; ptUV++;
-								*ptUV = texY; ptUV++;
+								*ptUV = downTexX; ptUV++;
+								*ptUV = downTexY; ptUV++;
 
 								*ptCols = color[0] + (rand() % 100) / 2000.0f; ptCols++;
 								*ptCols = color[1] + (rand() % 100) / 2000.0f; ptCols++;
@@ -303,8 +317,8 @@ class NYChunk
 								*ptVert = yPos; ptVert++;
 								*ptVert = zPos; ptVert++; _NbVertices++;
 
-								*ptUV = texX ; ptUV++;
-								*ptUV = texY + texSizeY; ptUV++;
+								*ptUV = downTexX; ptUV++;
+								*ptUV = downTexY + texSizeY; ptUV++;
 
 								*ptCols = color[0] + (rand() % 100) / 2000.0f; ptCols++;
 								*ptCols = color[1] + (rand() % 100) / 2000.0f; ptCols++;
@@ -320,8 +334,8 @@ class NYChunk
 								*ptVert = yPos; ptVert++;
 								*ptVert = zPos; ptVert++; _NbVertices++;
 
-								*ptUV = texX + texSizeX; ptUV++;
-								*ptUV = texY + texSizeY; ptUV++;
+								*ptUV = downTexX + texSizeX; ptUV++;
+								*ptUV = downTexY + texSizeY; ptUV++;
 
 								*ptCols = color[0] + (rand() % 100) / 2000.0f; ptCols++;
 								*ptCols = color[1] + (rand() % 100) / 2000.0f; ptCols++;
@@ -337,8 +351,8 @@ class NYChunk
 								*ptVert = yPos + NYCube::CUBE_SIZE; ptVert++;
 								*ptVert = zPos; ptVert++; _NbVertices++;
 
-								*ptUV = texX + texSizeX; ptUV++;
-								*ptUV = texY; ptUV++;
+								*ptUV = downTexX + texSizeX; ptUV++;
+								*ptUV = downTexY; ptUV++;
 
 								*ptCols = color[0] + (rand() % 100) / 2000.0f; ptCols++;
 								*ptCols = color[1] + (rand() % 100) / 2000.0f; ptCols++;
@@ -353,8 +367,8 @@ class NYChunk
 								*ptVert = yPos + NYCube::CUBE_SIZE; ptVert++;
 								*ptVert = zPos; ptVert++; _NbVertices++;
 
-								*ptUV = texX; ptUV++;
-								*ptUV = texY; ptUV++;
+								*ptUV = downTexX; ptUV++;
+								*ptUV = downTexY; ptUV++;
 
 								*ptCols = color[0] + (rand() % 100) / 2000.0f; ptCols++;
 								*ptCols = color[1] + (rand() % 100) / 2000.0f; ptCols++;

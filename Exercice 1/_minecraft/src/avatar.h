@@ -47,18 +47,19 @@ class NYAvatar
 
 		void render(void)
 		{
-			Cam->moveTo(Position);
+			NYVert3Df offset(0.0, 0.0, Height / 2);
+			Cam->moveTo(Position + offset);
 		
-			//glPushMatrix();
-			//glTranslatef(Position.X, Position.Y, Position.Z);
-			//glutSolidCube(Width);
-			//glDisable(GL_LIGHTING);
-			//glBegin(GL_LINES);
-			//glColor3d(1, 0, 0);
-			//glVertex3f(0,0,0);
-			//glVertex3f(Cam->_Direction.X*100, Cam->_Direction.Y*100, Cam->_Direction.Z*100);
-			//glEnd();
-			//glPopMatrix();
+			glPushMatrix();
+			glTranslatef(Position.X, Position.Y, Position.Z);
+			glutSolidCube(Width);
+			glDisable(GL_LIGHTING);
+			glBegin(GL_LINES);
+			glColor3d(1, 0, 0);
+			glVertex3f(0,0,0);
+			glVertex3f(Cam->_Direction.X*100, Cam->_Direction.Y*100, Cam->_Direction.Z*100);
+			glEnd();
+			glPopMatrix();
 
 		}
 
@@ -67,7 +68,7 @@ class NYAvatar
 			NYVert3Df inter;
 			int cubex, cubey, cubez;
 			//Log::log(Log::ENGINE_INFO, ("Cube position : " + cube.toStr()).c_str());
-			if (World->getRayCollision(Position, (Cam->_Direction) * 10, inter, cubex, cubey, cubez))
+			if (World->getRayCollision(Position, (Cam->_LookAt), inter, cubex, cubey, cubez))
 			{
 				World->deleteCube(cubex, cubey, cubez);
 			}

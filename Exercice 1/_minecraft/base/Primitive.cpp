@@ -7,6 +7,7 @@ Primitive::Primitive()
 
 void Primitive::cube(NYVert3Df position, NYVert3Df rotation, NYVert3Df scale)
 {
+	glPushMatrix();
 	glTranslatef(position.X, position.Y, position.Z);
 	glRotated(rotation.X, 1, 0, 0);
 	glRotated(rotation.Y, 0, 1, 0);
@@ -115,6 +116,7 @@ void Primitive::cube(NYVert3Df position, NYVert3Df rotation, NYVert3Df scale)
 	glVertex3d(-scale.X, -scale.Y, -scale.Z);
 	
 	glEnd();
+	glPopMatrix();
 }
 
 void Primitive::makeMat(float r, float g, float b)
@@ -136,6 +138,86 @@ void Primitive::makeMat(float r, float g, float b)
 	//Ambient
 	GLfloat materialAmbient[] = { 0.3, 0.3, 0.3, 1.0 };
 	glMaterialfv(GL_FRONT, GL_AMBIENT, materialAmbient);
+}
+
+void Primitive::skybox(NYVert3Df position, NYVert3Df rotation, NYVert3Df scale, NYTexFile* texture)
+{
+
+	float sizeX = 0.25f;
+	float sizeY = 0.33f;
+	glColor3d(1, 1, 1);
+
+		glPushMatrix();
+	glTranslatef(position.X, position.Y, position.Z);
+	glRotated(rotation.X, 1, 0, 0);
+	glRotated(rotation.Y, 0, 1, 0);
+	glRotated(rotation.Z, 0, 0, 1);
+
+	glBegin(GL_QUADS);
+
+	//Face Front
+	glTexCoord2d(0.50f, 0.33f);
+	glVertex3f(scale.X, scale.Y, scale.Z);
+	glTexCoord2d(0.50f, 0.33f+sizeY);
+	glVertex3f(scale.X, scale.Y, -scale.Z);
+	glTexCoord2d(0.50f+sizeX, 0.33f+sizeY);
+	glVertex3f(scale.X, -scale.Y, -scale.Z);
+	glTexCoord2d(0.50f+sizeX, 0.33f);
+	glVertex3f(scale.X, -scale.Y, scale.Z);
+
+	//Face Back
+	glTexCoord2d(0.0f, 0.33f);
+	glVertex3f(-scale.X, -scale.Y, scale.Z);
+	glTexCoord2d(0.0f, 0.33f+sizeY);
+	glVertex3f(-scale.X, -scale.Y, -scale.Z);
+	glTexCoord2d(0.0f+sizeX, 0.33f+sizeY);
+	glVertex3f(-scale.X, scale.Y, -scale.Z);
+	glTexCoord2d(0.0f+sizeX, 0.33f);
+	glVertex3f(-scale.X, scale.Y, scale.Z);
+
+	//Face Left
+	glTexCoord2d(0.25f, 0.33f);
+	glVertex3f(-scale.X, scale.Y, scale.Z);
+	glTexCoord2d(0.25f, 0.33f+sizeY);
+	glVertex3f(-scale.X, scale.Y, -scale.Z);
+	glTexCoord2d(0.25f+sizeX, 0.33f+sizeY);
+	glVertex3f(scale.X, scale.Y, -scale.Z);
+	glTexCoord2d(0.25f+sizeX, 0.33f);
+	glVertex3f(scale.X, scale.Y, scale.Z);
+
+	//Face Right
+	glTexCoord2d(0.75f, 0.33f);
+	glVertex3f(scale.X, -scale.Y, scale.Z);
+	glTexCoord2d(0.75f, 0.33f + sizeY);
+	glVertex3f(scale.X, -scale.Y, -scale.Z);
+	glTexCoord2d(0.75f + sizeX, 0.33f + sizeY);
+	glVertex3f(-scale.X, -scale.Y, -scale.Z);
+	glTexCoord2d(0.75f + sizeX, 0.33f);
+	glVertex3f(-scale.X, -scale.Y, scale.Z);
+
+	//Face up
+	glTexCoord2d(0.25f, 0.0f);
+	glVertex3f(-scale.X, -scale.Y, scale.Z);
+	glTexCoord2d(0.25f, 0.0f + sizeY);
+	glVertex3f(-scale.X, scale.Y, scale.Z);
+	glTexCoord2d(0.25f + sizeX, 0.0f + sizeY);
+	glVertex3f(scale.X, scale.Y, scale.Z);
+	glTexCoord2d(0.25f + sizeX, 0.0f);
+	glVertex3f(scale.X, -scale.Y, scale.Z);
+
+	//Face down
+	glTexCoord2d(0.25f, 0.66f);
+	glVertex3f(scale.X, -scale.Y, -scale.Z);
+	glTexCoord2d(0.25f, 0.66f + sizeY);
+	glVertex3f(scale.X, scale.Y, -scale.Z);
+	glTexCoord2d(0.25f + sizeX, 0.66f + sizeY);
+	glVertex3f(-scale.X, scale.Y, -scale.Z);
+	glTexCoord2d(0.25f + sizeX, 0.66f);
+	glVertex3f(-scale.X, -scale.Y, -scale.Z);
+	
+	glEnd();
+	glPopMatrix();
+
 }
 
 Primitive::~Primitive()

@@ -11,6 +11,7 @@ void main()
 {
 	float intensity;
 	vec3 n = normalize(normal);
+	vec4 color;
 	intensity = dot(vec3(gl_LightSource[0].position),n);
 
 		// Calculating The Diffuse Term And Clamping It To [0;1]
